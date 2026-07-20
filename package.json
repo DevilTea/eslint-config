@@ -31,9 +31,9 @@
 		"check": "pnpm test && pnpm lint",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"test": "pnpm build && node --test",
 		"prepublishOnly": "pnpm build",
-		"release": "bumpp && pnpm publish"
+		"release": "bumpp && pnpm publish",
+		"test": "pnpm build && node --test"
 	},
 	"dependencies": {
 		"@antfu/eslint-config": "^9.1.0"
