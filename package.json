@@ -4,14 +4,6 @@
 	"version": "8.0.2",
 	"packageManager": "pnpm@10.34.4",
 	"description": "DevilTea's opinionated ESLint flat config for JavaScript, TypeScript, and Vue.",
-	"keywords": [
-		"eslint",
-		"eslint-config",
-		"eslintconfig",
-		"flat-config",
-		"typescript",
-		"vue"
-	],
 	"author": "DevilTea <ch19980814@gmail.com> (https://github.com/DevilTea/)",
 	"license": "MIT",
 	"homepage": "https://github.com/DevilTea/eslint-config#readme",
@@ -22,6 +14,15 @@
 	"bugs": {
 		"url": "https://github.com/DevilTea/eslint-config/issues"
 	},
+	"keywords": [
+		"eslint",
+		"eslint-config",
+		"eslintconfig",
+		"flat-config",
+		"typescript",
+		"vue"
+	],
+	"sideEffects": false,
 	"exports": {
 		".": {
 			"import": {
@@ -35,7 +36,6 @@
 	"files": [
 		"dist"
 	],
-	"sideEffects": false,
 	"publishConfig": {
 		"access": "public"
 	},
