@@ -36,6 +36,9 @@
 		"test": "pnpm build && node --test test/index.test.mjs",
 		"test:package": "pnpm build && node test/package-smoke.mjs"
 	},
+	"peerDependencies": {
+		"eslint": "^10.4.0"
+	},
 	"dependencies": {
 		"@antfu/eslint-config": "^9.1.0"
 	},
@@ -45,8 +48,5 @@
 		"publint": "^0.3.21",
 		"tsdown": "^0.22.3",
 		"typescript": "~5.9.3"
-	},
-	"peerDependencies": {
-		"eslint": "^9.10.0 || ^10.0.0"
 	}
 }
