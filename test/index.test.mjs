@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict'
 import { registerHooks } from 'node:module'
+// This package intentionally uses Node's built-in runner to avoid a test framework dependency.
+// eslint-disable-next-line test/no-import-node-test
 import test from 'node:test'
 
 const callsKey = Symbol.for('@deviltea/eslint-config/test/calls')
@@ -28,7 +30,6 @@ const hooks = registerHooks({
 	},
 })
 
-// eslint-disable-next-line antfu/no-import-dist, antfu/no-top-level-await
 const { default: deviltea } = await import('../dist/index.mjs')
 
 hooks.deregister()
