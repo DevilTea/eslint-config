@@ -26,5 +26,8 @@ jobs:
       - name: install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: check
-        run: pnpm check
+      - name: test
+        run: pnpm test
+
+      - name: lint files
+        run: pnpm lint
