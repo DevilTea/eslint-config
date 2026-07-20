@@ -8,6 +8,7 @@ import {
 } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
 const pnpm = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm'
@@ -29,7 +30,8 @@ function run(command, args, options = {}) {
 			result.error?.message,
 			result.stdout,
 			result.stderr,
-		].filter(Boolean).join('\n'))
+		].filter(Boolean)
+			.join('\n'))
 	}
 
 	return result.stdout.trim()
@@ -54,7 +56,7 @@ function main() {
 
 		const consumerDirectory = join(temporaryDirectory, 'consumer')
 		const tarballUrl = pathToFileURL(join(temporaryDirectory, tarballName)).href
-		const eslintVersion = process.env.ESLINT_VERSION ?? '^10.0.0'
+		const eslintVersion = process.env.ESLINT_VERSION ?? '^10.4.0'
 
 		mkdirSync(consumerDirectory)
 
@@ -65,8 +67,8 @@ function main() {
 			packageManager: 'pnpm@10.34.4',
 			devDependencies: {
 				'@deviltea/eslint-config': tarballUrl,
-				eslint: eslintVersion,
-				typescript: '~5.9.3',
+				'eslint': eslintVersion,
+				'typescript': '~5.9.3',
 			},
 		})
 
