@@ -33,7 +33,7 @@ The package inherits all defaults from `@antfu/eslint-config@9.1.0` and adds the
 ### Vue
 
 - Use non-hyphenated attributes and event names.
-- Allow one attribute per line.
+- Limit attributes to one per line.
 - Require Composition API or `<script setup>` component style.
 - Require type-based `defineProps` and `defineEmits` declarations.
 - Require the conventional macro variable names `props`, `emit`, `slots`, and `attrs`.
@@ -72,7 +72,7 @@ Add scripts to `package.json`:
 
 ## Customization
 
-The factory has the same options and composer API as [`@antfu/eslint-config`](https://github.com/antfu/eslint-config#customization).
+The factory accepts the same option shape and returns the same composer type as [`@antfu/eslint-config`](https://github.com/antfu/eslint-config#customization).
 
 ### Override rules
 
@@ -112,7 +112,7 @@ export default deviltea({
 
 ### Type-aware TypeScript rules
 
-All upstream TypeScript options are forwarded unchanged:
+Upstream TypeScript options are preserved while this package merges its default rule overrides:
 
 ```mjs
 import deviltea from '@deviltea/eslint-config'
@@ -129,7 +129,7 @@ export default deviltea({
 
 ### Vue options
 
-All upstream Vue options are also preserved:
+Upstream Vue options are preserved while this package merges its default rule overrides:
 
 ```mjs
 import deviltea from '@deviltea/eslint-config'
@@ -163,11 +163,6 @@ import deviltea from '@deviltea/eslint-config'
 export default deviltea()
 	.prepend({
 		ignores: ['coverage/**'],
-	})
-	.override('antfu/javascript/rules', {
-		rules: {
-			'no-console': 'warn',
-		},
 	})
 ```
 
@@ -240,4 +235,4 @@ pnpm exec simple-git-hooks
 
 `@antfu/eslint-config` is pinned exactly so reinstalling the same `@deviltea/eslint-config` version cannot silently change lint behavior. Upstream upgrades are reviewed and released deliberately.
 
-Changes to the supported Node.js or ESLint range, enabled config families, or opinionated rule behavior may require a major release.
+Changes to the supported Node.js or ESLint range, enabled config families, or existing opinionated rule behavior are treated as breaking changes and released as a new major version.
