@@ -1,5 +1,6 @@
 import { spawnSync } from 'node:child_process'
 import {
+	mkdirSync,
 	mkdtempSync,
 	readdirSync,
 	rmSync,
@@ -25,6 +26,7 @@ function run(command, args, options = {}) {
 	if (result.status !== 0) {
 		throw new Error([
 			`Command failed: ${command} ${args.join(' ')}`,
+			result.error?.message,
 			result.stdout,
 			result.stderr,
 		].filter(Boolean).join('\n'))
@@ -54,11 +56,7 @@ function main() {
 		const tarballUrl = pathToFileURL(join(temporaryDirectory, tarballName)).href
 		const eslintVersion = process.env.ESLINT_VERSION ?? '^10.0.0'
 
-		writeJson(join(temporaryDirectory, 'package.json'), {
-			private: true,
-		})
-
-		run('mkdir', ['-p', consumerDirectory])
+		mkdirSync(consumerDirectory)
 
 		writeJson(join(consumerDirectory, 'package.json'), {
 			name: 'eslint-config-consumer-smoke',
