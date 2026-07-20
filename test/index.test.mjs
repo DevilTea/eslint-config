@@ -28,6 +28,7 @@ const hooks = registerHooks({
 	},
 })
 
+// eslint-disable-next-line antfu/no-import-dist
 const { default: deviltea } = await import('../dist/index.mjs')
 
 hooks.deregister()
