@@ -17,6 +17,10 @@ on:
           - minor
           - major
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -38,7 +42,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: validate
-        run: pnpm build && pnpm lint
+        run: pnpm check
 
       - name: bump version
         run: |
@@ -50,6 +54,6 @@ jobs:
         run: pnpm publish
 
       - name: generate release notes
-        run: npx changelogithub
+        run: pnpm exec changelogithub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
