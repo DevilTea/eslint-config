@@ -44,7 +44,6 @@
 	},
 	"devDependencies": {
 		"bumpp": "^11.1.0",
-		"changelogithub": "14.0.0",
 		"eslint": "^10.6.0",
 		"publint": "^0.3.21",
 		"tsdown": "^0.22.3",
