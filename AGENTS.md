@@ -59,7 +59,7 @@ pnpm release
 
 ## Gotchas
 
-- `eslint.config.js` imports `./dist/index.mjs`, so `pnpm build` must run before `pnpm lint` (CI uses `pnpm check`, which preserves that order); a stale `dist/` means you lint with old rules
+- `eslint.config.js` imports `./dist/index.mjs`, so `pnpm build` must run before `pnpm lint` (`pnpm test` builds first, and CI runs test before lint); a stale `dist/` means you lint with old rules
 - `pnpm-workspace.yaml` exists only to hold pnpm supply-chain security settings; the config itself enforces them via `pnpm/yaml-enforce-settings` (requires `shellEmulator: true` and `trustPolicy: no-downgrade`) — removing those keys makes lint fail
 - `strictDepBuilds` is on with `onlyBuiltDependencies: []` — new deps that need build scripts must be reviewed into the allowlist
 - Node >= 24 required (`engines`, enforced by `engine-strict=true` in `.npmrc`)
