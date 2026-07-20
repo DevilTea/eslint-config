@@ -55,7 +55,7 @@ pnpm release
 - Keep unit tests focused on this package's contract: default rules, nested option preservation, override precedence, booleans, and user config forwarding.
 - Do not snapshot the full resolved upstream ESLint config; that would make routine upstream upgrades unnecessarily brittle.
 - `test/package-smoke.mjs` packs the publishable tarball, installs it into a temporary consumer with strict peer dependency checks, and validates runtime import, generated declarations, and JS/TS/Vue lint behavior.
-- CI runs the package smoke test against both supported ESLint major versions. Set `ESLINT_VERSION` to reproduce a specific matrix entry locally.
+- CI runs the package smoke test against ESLint 10.4.0, the minimum supported version imposed by the current dependency graph, and the latest compatible ESLint 10 release. Set `ESLINT_VERSION` to reproduce a specific matrix entry locally.
 
 ## Release
 
